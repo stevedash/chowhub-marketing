@@ -82,6 +82,13 @@
       .radio-option:hover, .radio-option.selected { border-color: #818cf8; background: #1e1b4b; }
     }
     .radio-option input[type="radio"] { accent-color: #6366f1; width: 18px; height: 18px; }
+    .radio-option-cancel { margin-top: 8px; border-top: 1px dashed #e2e8f0; padding-top: 18px; border-radius: 12px; }
+    .radio-option-cancel:hover { border-color: #ef4444; background: #fef2f2; }
+    .radio-option-cancel.selected { border-color: #ef4444; background: #fef2f2; }
+    .radio-option-cancel input[type="radio"] { accent-color: #ef4444; }
+    @media (prefers-color-scheme: dark) {
+      .radio-option-cancel:hover, .radio-option-cancel.selected { border-color: #ef4444; background: #450a0a; }
+    }
     .radio-option-info { flex: 1; }
     .radio-option-name { font-weight: 600; font-size: 0.95rem; color: #0f172a; }
     .radio-option-desc { font-size: 0.8rem; color: #64748b; margin-top: 2px; }
@@ -176,8 +183,15 @@
         <label class="radio-option" id="opt-base">
           <input type="radio" name="target_tier" value="base" />
           <div class="radio-option-info">
+            <div class="radio-option-name">Base — $29/month</div>
+            <div class="radio-option-desc">Core POS features only</div>
+          </div>
+        </label>
+        <label class="radio-option radio-option-cancel" id="opt-cancel">
+          <input type="radio" name="target_tier" value="cancel" />
+          <div class="radio-option-info">
             <div class="radio-option-name">Cancel subscription</div>
-            <div class="radio-option-desc">Downgrade to Base — core POS features only</div>
+            <div class="radio-option-desc">Terminate service completely — no further charges</div>
           </div>
         </label>
       </div>
@@ -209,13 +223,19 @@
       checkReady();
     });
 
+    function btnLabelFor(value) {
+      if (value === 'cancel') return 'Cancel Subscription';
+      if (value === 'pro')    return 'Downgrade to Pro';
+      if (value === 'base')   return 'Downgrade to Base';
+      return 'Confirm Change';
+    }
+
     radios.forEach((r, i) => {
       r.addEventListener('change', () => {
         radioLabels.forEach(l => l.classList.remove('selected'));
         radioLabels[i].classList.add('selected');
-        // Update button style for cancel
-        submitBtn.classList.toggle('danger', r.value === 'base');
-        submitBtn.textContent = r.value === 'base' ? 'Cancel Subscription' : 'Confirm Downgrade';
+        submitBtn.classList.toggle('danger', r.value === 'cancel');
+        submitBtn.textContent = btnLabelFor(r.value);
         checkReady();
       });
     });
@@ -231,6 +251,17 @@
       const chosen = document.querySelector('input[name="target_tier"]:checked');
       if (!chosen || code.length < 6) return;
 
+      // Extra confirmation step for full cancellation
+      if (chosen.value === 'cancel') {
+        const ok = confirm(
+          'Are you sure you want to cancel your subscription?\n\n' +
+          'This will terminate your ChowHub POS service completely and stop all future charges. ' +
+          'You will lose access to all paid features.\n\n' +
+          'Click OK to confirm cancellation, or Cancel to go back.'
+        );
+        if (!ok) return;
+      }
+
       submitBtn.disabled = true;
       submitBtn.textContent = 'Processing…';
       resultBox.style.display = 'none';
@@ -244,17 +275,21 @@
         const data = await res.json();
 
         if (res.ok && data.success) {
-          const toLabel = chosen.value === 'base' ? 'Base' : 'Pro';
           resultBox.className = 'result-box success';
-          resultBox.innerHTML = `
-            <strong>Done!</strong> Your plan has been changed to <strong>ChowHub POS ${toLabel}</strong>.<br>
-            ${chosen.value === 'base'
-              ? 'Your subscription has been cancelled. You\'ll receive a confirmation email shortly.'
-              : 'Open your ChowHub POS and click <strong>"Already upgraded? Check now"</strong> to refresh your plan.'}
-          `;
+          if (chosen.value === 'cancel') {
+            resultBox.innerHTML = `
+              <strong>Cancelled.</strong> Your ChowHub POS subscription has been terminated and all future charges have stopped.<br>
+              You'll receive a confirmation email shortly. To re-subscribe, visit <a href="https://getchowhub.com/upgrade">getchowhub.com/upgrade</a>.
+            `;
+          } else {
+            const toLabel = chosen.value === 'pro' ? 'Pro' : 'Base';
+            resultBox.innerHTML = `
+              <strong>Done!</strong> Your plan has been changed to <strong>ChowHub POS ${toLabel}</strong>.<br>
+              Open your ChowHub POS and click <strong>"Already upgraded? Check now"</strong> to refresh your plan.
+            `;
+          }
           resultBox.style.display = 'block';
           submitBtn.textContent = 'Change Confirmed';
-          // Disable further submissions
           radios.forEach(r => r.disabled = true);
           codeInput.disabled = true;
         } else {
@@ -263,7 +298,7 @@
           resultBox.style.display = 'block';
           const chosen2 = document.querySelector('input[name="target_tier"]:checked');
           submitBtn.disabled = false;
-          submitBtn.textContent = chosen2?.value === 'base' ? 'Cancel Subscription' : 'Confirm Downgrade';
+          submitBtn.textContent = btnLabelFor(chosen2?.value);
         }
       } catch (e) {
         resultBox.className = 'result-box error';
@@ -271,7 +306,7 @@
         resultBox.style.display = 'block';
         const chosen2 = document.querySelector('input[name="target_tier"]:checked');
         submitBtn.disabled = false;
-        submitBtn.textContent = chosen2?.value === 'base' ? 'Cancel Subscription' : 'Confirm Downgrade';
+        submitBtn.textContent = btnLabelFor(chosen2?.value);
       }
     });
   </script>
