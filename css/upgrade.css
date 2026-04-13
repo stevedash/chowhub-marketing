@@ -54,7 +54,7 @@ body {
 }
 
 .logo svg {
-  height: 36px;
+  height: 40px;
   width: auto;
   color: var(--text);
 }
@@ -351,6 +351,38 @@ body {
 
 .footer a { color: #94a3b8; text-decoration: none; }
 .footer a:hover { color: #fff; }
+
+/* ── Feature tier dividers ────────────────────────────────────── */
+.feature-divider {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .5rem 0 .25rem;
+}
+
+.feature-divider::before,
+.feature-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+.tier-label {
+  font-size: .65rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  padding: .15rem .5rem;
+  border-radius: 999px;
+}
+
+.tier-label-pro  { color: var(--pro);  background: var(--pro-light); }
+.tier-label-ent  { color: var(--ent);  background: var(--ent-light); }
+
+/* Cards align to top so they grow naturally in height */
+.cards { align-items: start; }
 
 /* ── Responsive ───────────────────────────────────────────────── */
 @media (max-width: 768px) {
