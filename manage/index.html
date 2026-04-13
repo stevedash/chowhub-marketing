@@ -267,7 +267,7 @@
       resultBox.style.display = 'none';
 
       try {
-        const res = await fetch('https://chowhub-license.getchowhub.workers.dev/downgrade', {
+        const res = await fetch('https://chowhub-license.ssl-dash.workers.dev/downgrade', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ upgrade_code: code, target_tier: chosen.value })
