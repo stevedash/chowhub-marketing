@@ -466,11 +466,9 @@ html.lenis, html.lenis body { height: auto; }
 .home-v2 .ch-slider-controls {
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;          /* arrows centered in the middle of the screen */
   gap: 10px;
   margin-top: 1.25rem;
-  padding-left: var(--gutter);
-  padding-right: var(--gutter);     /* keep arrows aligned to the content edges, not the screen edge */
 }
 .home-v2 .ch-slider-btn {
   width: 44px;
