@@ -281,6 +281,10 @@
 /* ── CTA + Footer on the light page ────────────────────────────── */
 .home-v2 .cta-banner { padding: 2rem 0 5rem; }
 .home-v2 .site-footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.08); }
+/* The header logo is near-black for the light page; on the dark footer that
+   renders invisible. Force the footer logo white (the dot stays green via the
+   circle rule above). */
+.home-v2 .site-footer .logo svg { color: #ffffff; }
 
 /* ── Scroll reveal ─────────────────────────────────────────────── */
 /* Only hides content once JS confirms it can reveal it (.reveal-ready),
