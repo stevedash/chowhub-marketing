@@ -53,6 +53,9 @@
     if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: behavior }); });
     track.addEventListener('scroll', syncButtons, { passive: true });
     window.addEventListener('resize', syncButtons, { passive: true });
+    // Always start on card 1 (flush to the left gutter). Guards against the
+    // browser restoring a mid-scroll position so card 1 never rests clipped-left.
+    track.scrollLeft = 0;
     syncButtons();
 
     // Slide the gallery in from the right when it scrolls into view (Apple-style).

@@ -422,7 +422,11 @@ html.lenis, html.lenis body { height: auto; }
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  scroll-snap-type: x mandatory;
+  /* proximity, NOT mandatory: mandatory can rest snapped to card 2 on load
+     (Lenis/initial layout), leaving card 1 clipped off the LEFT edge. proximity
+     keeps the natural scrollLeft=0 rest (card 1 flush left, next card peeks right)
+     while still snapping cleanly when you click/swipe near a card. */
+  scroll-snap-type: x proximity;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;            /* Firefox */
