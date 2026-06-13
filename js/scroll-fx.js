@@ -53,10 +53,27 @@
     if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: behavior }); });
     track.addEventListener('scroll', syncButtons, { passive: true });
     window.addEventListener('resize', syncButtons, { passive: true });
-    // Always start on card 1 (flush to the left gutter). Guards against the
-    // browser restoring a mid-scroll position so card 1 never rests clipped-left.
-    track.scrollLeft = 0;
-    syncButtons();
+
+    // Always open on card 1, even across refreshes. Browsers restore a scroll
+    // container's scrollLeft on reload AFTER this defer script runs, so a single
+    // reset here gets overwritten (refresh would land on the previous card).
+    // Re-assert it instantly (no smooth animation) at every point that can fire
+    // after the browser's restoration: now, next frame, on load, and on bfcache
+    // restore (pageshow).
+    function resetToStart() {
+      var prev = track.style.scrollBehavior;
+      track.style.scrollBehavior = 'auto';
+      track.scrollLeft = 0;
+      track.style.scrollBehavior = prev;
+      syncButtons();
+    }
+    resetToStart();
+    requestAnimationFrame(resetToStart);
+    window.addEventListener('load', function () {
+      resetToStart();
+      requestAnimationFrame(resetToStart);
+    });
+    window.addEventListener('pageshow', resetToStart);
 
     // Slide the gallery in from the right when it scrolls into view (Apple-style).
     // Skipped under reduced motion (CSS shows it immediately).
