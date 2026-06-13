@@ -275,6 +275,19 @@
   opacity: .5;
 }
 
+/* Frameless variant for TRANSPARENT device-render PNGs: no white card, no
+   border, no shadow — the transparent png sits directly on the section bg.
+   (The bordered/#fff card is only right for opaque flat screenshots.) */
+.home-v2 .scene-shot--bare,
+.home-v2 .scene--light .scene-shot--bare,
+.home-v2 .scene--gray .scene-shot--bare {
+  border: none;
+  background: transparent;
+  box-shadow: none;
+  overflow: visible;
+}
+.home-v2 .scene-shot--bare::before { display: none; }
+
 /* (The green hero background comes from .scene--green, which already
    outranks the inline .scene-hero photo style via higher specificity.) */
 
