@@ -4,18 +4,25 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ChowHub POS — Plans & Pricing</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <meta name="description" content="Simple, flat-rate pricing for food trucks, cafés, and restaurants. No transaction fees. No hardware lock-in." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../css/site.css" />
   <link rel="stylesheet" href="../css/upgrade.css" />
 </head>
 <body>
 
   <!-- Nav -->
-  <header class="nav">
+  <header class="nav" id="siteNav">
     <div class="container nav-inner">
-      <a href="https://getchowhub.com" class="logo" aria-label="ChowHub POS">
+      <a href="/" class="logo" aria-label="ChowHub POS">
         <svg viewBox="0 0 200 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
           <polygon points="84.98 19.06 89.46 34.26 94.65 19.14 101.27 19.06 106.61 34.26 111.08 19.06 124.63 19.06 124.63 27.64 134.93 27.64 134.93 19.06 141.59 19.06 141.7 19.17 141.7 41.3 141.59 41.41 135.05 41.41 134.93 41.3 134.93 32.83 124.63 32.83 124.63 41.3 124.51 41.41 117.93 41.41 117.93 19.66 110.41 41.37 102.62 41.34 97.77 27.41 93.07 41.34 92.85 41.41 85.54 41.41 85.29 41.29 77.68 19.06 84.98 19.06"/>
           <path d="M168.11,19.06h14.26c4.21.29,8.5,1.65,8.09,6.73-.14,1.67-1.2,3.33-2.74,4.02l-.05.15c2.45.93,3.41,2.9,3.24,5.46-.31,4.74-5.37,5.92-9.29,5.98h-13.51v-22.35ZM181.69,24.1h-6.88v3.61h7.03c.3,0,1.24-.27,1.51-.45.66-.46.78-1.44.49-2.15-.16-.4-.62-.66-1.02-.79-.31-.1-.81-.2-1.13-.22ZM174.81,36.22h7.41c.34,0,1.17-.29,1.46-.49.79-.57.89-2.12.08-2.7-.25-.18-1.1-.49-1.39-.49h-7.56v3.69Z"/>
@@ -26,7 +33,19 @@
           <circle cx="195.23" cy="38.16" r="3.16"/>
         </svg>
       </a>
-      <a href="mailto:billing@chowhub.ca" class="nav-contact">Contact Sales</a>
+      <nav class="nav-links">
+        <a href="/features/">Features</a>
+        <a href="/packages/" class="active">Pricing</a>
+        <a href="/compare/">Compare</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+      <div class="nav-right">
+        <a href="https://cloud.getchowhub.com/" class="nav-signin">Sign in</a>
+        <a href="/packages/#free" class="nav-cta">Start Free</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('siteNav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
     </div>
   </header>
 
@@ -48,7 +67,7 @@
         <div class="card" id="free">
           <div class="card-header">
             <div class="tier-badge badge-free">Free</div>
-            <div class="price"><span class="amount">$0</span><span class="period">/mo</span></div>
+            <div class="price"><span class="amount">0</span><span class="period">/mo</span></div>
             <p class="card-desc">For solo operators just getting started. No card required.</p>
           </div>
           <ul class="features">
@@ -57,14 +76,14 @@
             <li><span class="check">✓</span> Cash payments</li>
             <li><span class="check">✓</span> Manual card entry</li>
           </ul>
-          <a href="https://getchowhub.com/signup" class="btn btn-outline">Start Free</a>
+          <a href="https://cloud.getchowhub.com/signup.jsp" class="btn btn-outline">Start Free</a>
         </div>
 
         <!-- Base -->
         <div class="card" id="base">
           <div class="card-header">
             <div class="tier-badge badge-base">Base</div>
-            <div class="price"><span class="amount">$29</span><span class="period">/mo</span></div>
+            <div class="price"><span class="amount">29</span><span class="period">/mo</span></div>
             <p class="card-desc">Everything you need to run your counter and take payments.</p>
           </div>
           <ul class="features">
@@ -75,9 +94,9 @@
             <li><span class="check">✓</span> Bar display</li>
             <li><span class="check">✓</span> Cash &amp; card payments</li>
             <li><span class="check">✓</span> Integrated card terminal</li>
-            <li><span class="check">✓</span> Works offline</li>
+            <li><span class="check">✓</span> Works offline*</li>
           </ul>
-          <a href="mailto:billing@chowhub.ca?subject=ChowHub Base Plan" class="btn btn-outline">Subscribe — $29/mo</a>
+          <a href="https://cloud.getchowhub.com/signup.jsp?plan=base" class="btn btn-outline">Subscribe — $29/mo</a>
         </div>
 
         <!-- Pro -->
@@ -85,7 +104,7 @@
           <div class="popular-badge">Most Popular</div>
           <div class="card-header">
             <div class="tier-badge badge-pro">Pro</div>
-            <div class="price"><span class="amount">$59</span><span class="period">/mo</span></div>
+            <div class="price"><span class="amount">59</span><span class="period">/mo</span></div>
             <p class="card-desc">For growing operations that need inventory control and insights.</p>
           </div>
           <ul class="features">
@@ -96,7 +115,7 @@
             <li><span class="check">✓</span> Bar display</li>
             <li><span class="check">✓</span> Cash &amp; card payments</li>
             <li><span class="check">✓</span> Integrated card terminal</li>
-            <li><span class="check">✓</span> Works offline</li>
+            <li><span class="check">✓</span> Works offline*</li>
             <li class="feature-divider"><span class="tier-label tier-label-pro">Pro features</span></li>
             <li><span class="check check-pro">✓</span> Inventory management</li>
             <li><span class="check check-pro">✓</span> Recipe tracking</li>
@@ -104,15 +123,15 @@
             <li><span class="check check-pro">✓</span> Gift cards</li>
             <li><span class="check check-pro">✓</span> Sales reports &amp; analytics</li>
           </ul>
-          <a href="https://buy.stripe.com/test_6oUeVdcLve5wgY00XDafS01" class="btn btn-pro" id="pro-cta">Subscribe — $59/mo</a>
+          <a href="https://cloud.getchowhub.com/signup.jsp?plan=pro" class="btn btn-pro" id="pro-cta">Subscribe — $59/mo</a>
         </div>
 
         <!-- Enterprise -->
         <div class="card" id="enterprise">
           <div class="card-header">
             <div class="tier-badge badge-enterprise">Enterprise</div>
-            <div class="price"><span class="amount">$120</span><span class="period">/mo</span></div>
-            <p class="card-desc">For multi-location operators and high-volume venues with online orders.</p>
+            <div class="price"><span class="amount">120</span><span class="period">/mo</span></div>
+            <p class="card-desc">For high-volume venues with online orders and full customer-facing branding.</p>
           </div>
           <ul class="features">
             <li><span class="check">✓</span> Full point-of-sale</li>
@@ -122,7 +141,7 @@
             <li><span class="check">✓</span> Bar display</li>
             <li><span class="check">✓</span> Cash &amp; card payments</li>
             <li><span class="check">✓</span> Integrated card terminal</li>
-            <li><span class="check">✓</span> Works offline</li>
+            <li><span class="check">✓</span> Works offline*</li>
             <li class="feature-divider"><span class="tier-label tier-label-pro">Pro features</span></li>
             <li><span class="check check-pro">✓</span> Inventory management</li>
             <li><span class="check check-pro">✓</span> Recipe tracking</li>
@@ -132,13 +151,16 @@
             <li class="feature-divider"><span class="tier-label tier-label-ent">Enterprise features</span></li>
             <li><span class="check check-ent">✓</span> Online ordering portal</li>
             <li><span class="check check-ent">✓</span> Menu sync to order page</li>
-            <li><span class="check check-ent">✓</span> Multi-location sync</li>
+            <li><span class="check check-ent">✓</span> Custom branding (logo + colors)</li>
             <li><span class="check check-ent">✓</span> Priority support</li>
           </ul>
-          <a href="https://buy.stripe.com/test_7sYbJ19zjf9A8rudKpafS00" class="btn btn-enterprise" id="enterprise-cta">Subscribe — $120/mo</a>
+          <a href="https://cloud.getchowhub.com/signup.jsp?plan=enterprise" class="btn btn-enterprise" id="enterprise-cta">Subscribe — $120/mo</a>
         </div>
 
       </div>
+      <p class="pricing-footnote" style="text-align:center;font-size:.8rem;color:var(--text-faint);margin-top:1.75rem;line-height:1.55;">
+        * Offline mode requires ChowHub hardware (on-premise install). Cloud plans need an internet connection.
+      </p>
     </div>
   </section>
 
@@ -155,7 +177,7 @@
       </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M12 21a9.004 9.004 0 0 0 8.716-6.747M12 21a9.004 9.004 0 0 1-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 0 1 7.843 4.582M12 3a8.997 8.997 0 0 0-7.843 4.582m15.686 0A11.953 11.953 0 0 1 12 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0 1 21 12c0 .778-.099 1.533-.284 2.253M3 12c0 .778.099 1.533.284 2.253"/></svg>
-        <span>Runs offline</span>
+        <span>Runs offline*</span>
       </div>
       <div class="trust-item">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5"/></svg>
@@ -167,7 +189,11 @@
   <!-- FAQ -->
   <section class="faq">
     <div class="container faq-inner">
-      <h2 class="faq-title">Common questions</h2>
+      <div class="faq-header">
+        <div class="faq-badge">FAQ</div>
+        <h2 class="faq-title">Common questions</h2>
+        <p class="faq-sub">Everything you need to know before you start.</p>
+      </div>
       <div class="faq-list">
         <details class="faq-item">
           <summary>Do you charge per transaction?</summary>
@@ -193,11 +219,82 @@
     </div>
   </section>
 
+  <!-- CTA Banner -->
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-copy">
+          <h2 class="cta-title">Ready to swap your old POS?</h2>
+          <p class="cta-sub">Start free in two minutes. Bring your own hardware, your own menu, your own pace.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="https://cloud.getchowhub.com/signup.jsp" class="btn btn-pro cta-btn">
+            Start Free
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="mailto:billing@chowhub.ca" class="btn btn-outline cta-btn">Talk to sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- Footer -->
-  <footer class="footer">
-    <div class="container footer-inner">
-      <p>© 2026 Norel Technologies. All rights reserved.</p>
-      <p><a href="mailto:billing@chowhub.ca">billing@chowhub.ca</a></p>
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="ChowHub">
+            <svg viewBox="0 0 200 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="84.98 19.06 89.46 34.26 94.65 19.14 101.27 19.06 106.61 34.26 111.08 19.06 124.63 19.06 124.63 27.64 134.93 27.64 134.93 19.06 141.59 19.06 141.7 19.17 141.7 41.3 141.59 41.41 135.05 41.41 134.93 41.3 134.93 32.83 124.63 32.83 124.63 41.3 124.51 41.41 117.93 41.41 117.93 19.66 110.41 41.37 102.62 41.34 97.77 27.41 93.07 41.34 92.85 41.41 85.54 41.41 85.29 41.29 77.68 19.06 84.98 19.06"/>
+              <path d="M168.11,19.06h14.26c4.21.29,8.5,1.65,8.09,6.73-.14,1.67-1.2,3.33-2.74,4.02l-.05.15c2.45.93,3.41,2.9,3.24,5.46-.31,4.74-5.37,5.92-9.29,5.98h-13.51v-22.35ZM181.69,24.1h-6.88v3.61h7.03c.3,0,1.24-.27,1.51-.45.66-.46.78-1.44.49-2.15-.16-.4-.62-.66-1.02-.79-.31-.1-.81-.2-1.13-.22ZM174.81,36.22h7.41c.34,0,1.17-.29,1.46-.49.79-.57.89-2.12.08-2.7-.25-.18-1.1-.49-1.39-.49h-7.56v3.69Z"/>
+              <path d="M65.4,18.71c8.09-.44,14.92,3.87,14.31,12.66-.33,4.76-3.7,8.44-8.18,9.72-7.7,2.2-17.75-.74-18.3-9.95-.46-7.62,4.98-12.04,12.18-12.43ZM65.93,23.97c-4.82.28-6.82,3.91-5.7,8.44,1.37,5.51,11.24,5.46,12.52-.11,1.17-5.1-1.56-8.64-6.82-8.33Z"/>
+              <polygon points="35.33 27.64 45.56 27.64 45.56 19.17 45.67 19.06 52.33 19.06 52.33 41.3 52.22 41.41 45.67 41.41 45.56 41.3 45.56 32.83 35.33 32.83 35.33 41.3 35.21 41.41 28.67 41.41 28.56 41.3 28.56 19.06 35.21 19.06 35.33 19.17 35.33 27.64"/>
+              <path d="M28.1,26.74l-6.09,1.43c-1.12-3.97-5.98-4.8-9.48-3.8s-4.59,3.51-4.29,7c.4,4.71,6.39,5.86,10.12,4.63,1.81-.6,3.04-1.93,3.7-3.7l6.01,1.43c-.91,4-4.73,6.66-8.54,7.57-7.78,1.84-17.78-1.4-18.13-10.61-.38-9.76,9.92-13.37,18.06-11.52,3.92.89,7.68,3.47,8.65,7.56Z"/>
+              <path d="M166.61,19.06v14.19c-.34,5.81-4.79,8.18-10.12,8.47-6.38.34-12.95-1.17-13.36-8.69v-13.96h6.66l.11.11v13.85c0,.74.58,1.97,1.17,2.44,1.63,1.3,6.29,1.29,7.86-.11.47-.42,1.05-1.57,1.05-2.18v-14l.11-.11h6.51Z"/>
+              <circle cx="195.23" cy="38.16" r="3.16"/>
+            </svg>
+          </a>
+          <p>Real POS. No lock-in. Built by Norel Technologies for independent operators.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/packages/">Pricing</a></li>
+            <li><a href="/hardware/">Hardware</a></li>
+            <li><a href="/compare/">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="/for/food-trucks/">Food Trucks</a></li>
+            <li><a href="/for/cafes/">Cafés</a></li>
+            <li><a href="/for/bars/">Bars</a></li>
+            <li><a href="/for/restaurants/">Restaurants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Norel Technologies · <a href="mailto:billing@chowhub.ca">billing@chowhub.ca</a></span>
+        <span class="footer-tag">Real POS. No lock-in.</span>
+      </div>
     </div>
   </footer>
 
@@ -211,6 +308,50 @@
           setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'center' }), 100);
         }
       }
+    })();
+
+    // ── Logged-in upgrade flow ─────────────────────────────────────────────
+    // When the user is bounced here from the cloud dashboard's upgrade modal
+    // (?from=cloud&current=<tier>), rewrite the plan cards so they don't have
+    // to re-create an account:
+    //   - Current plan card → disabled "Current Plan" button
+    //   - Higher-tier cards → Subscribe goes straight to cloud's billing
+    //     checkout endpoint (which reuses the existing Stripe customer)
+    //   - Lower-tier cards → "Manage in account" link to the dashboard
+    //     (downgrades belong in the Stripe portal, not a new Checkout)
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('from') !== 'cloud') return;
+
+      const current  = (params.get('current') || '').toLowerCase();
+      const PLAN_RANK = { free: 0, base: 1, pro: 2, enterprise: 3 };
+      const currentRank = current in PLAN_RANK ? PLAN_RANK[current] : -1;
+
+      ['free', 'base', 'pro', 'enterprise'].forEach(function (plan) {
+        const card = document.getElementById(plan);
+        if (!card) return;
+        const cta = card.querySelector('a.btn');
+        if (!cta) return;
+
+        if (plan === current) {
+          cta.textContent = 'Current Plan';
+          cta.removeAttribute('href');
+          cta.classList.add('btn-current');
+          cta.setAttribute('aria-disabled', 'true');
+          cta.style.opacity   = '0.5';
+          cta.style.cursor    = 'not-allowed';
+          cta.style.pointerEvents = 'none';
+        } else if (PLAN_RANK[plan] > currentRank) {
+          // Upgrade — direct Checkout for the existing customer.
+          // Free isn't billable so skip it (would 400 with invalid_plan).
+          if (plan === 'free') return;
+          cta.href = 'https://cloud.getchowhub.com/api/billing/checkout?plan=' + plan + '&redirect=1';
+        } else {
+          // Downgrade — hand off to the dashboard / Stripe portal.
+          cta.textContent = 'Manage in account';
+          cta.href = 'https://cloud.getchowhub.com/dashboard.jsp';
+        }
+      });
     })();
   </script>
 

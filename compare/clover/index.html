@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ChowHub vs Clover — Honest comparison</title>
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <meta name="description" content="Switching from Clover? Per-device pricing math, processor lock-in, and where each wins. ChowHub is 1/3 to 1/2 the monthly cost with no Fiserv lock-in." />
+  <meta property="og:title" content="ChowHub vs Clover — Honest comparison" />
+  <meta property="og:description" content="Switching from Clover? Per-device pricing math, processor lock-in, and where each wins. ChowHub is 1/3 to 1/2 the monthly cost with no Fiserv lock-in." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://getchowhub.com/compare/clover/" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/site.css" />
+  <link rel="stylesheet" href="/css/upgrade.css" />
+</head>
+<body>
+
+  <!-- Nav -->
+  <header class="nav" id="siteNav">
+    <div class="container nav-inner">
+      <a href="/" class="logo" aria-label="ChowHub POS">
+        <svg viewBox="0 0 200 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="84.98 19.06 89.46 34.26 94.65 19.14 101.27 19.06 106.61 34.26 111.08 19.06 124.63 19.06 124.63 27.64 134.93 27.64 134.93 19.06 141.59 19.06 141.7 19.17 141.7 41.3 141.59 41.41 135.05 41.41 134.93 41.3 134.93 32.83 124.63 32.83 124.63 41.3 124.51 41.41 117.93 41.41 117.93 19.66 110.41 41.37 102.62 41.34 97.77 27.41 93.07 41.34 92.85 41.41 85.54 41.41 85.29 41.29 77.68 19.06 84.98 19.06"/>
+          <path d="M168.11,19.06h14.26c4.21.29,8.5,1.65,8.09,6.73-.14,1.67-1.2,3.33-2.74,4.02l-.05.15c2.45.93,3.41,2.9,3.24,5.46-.31,4.74-5.37,5.92-9.29,5.98h-13.51v-22.35ZM181.69,24.1h-6.88v3.61h7.03c.3,0,1.24-.27,1.51-.45.66-.46.78-1.44.49-2.15-.16-.4-.62-.66-1.02-.79-.31-.1-.81-.2-1.13-.22ZM174.81,36.22h7.41c.34,0,1.17-.29,1.46-.49.79-.57.89-2.12.08-2.7-.25-.18-1.1-.49-1.39-.49h-7.56v3.69Z"/>
+          <path d="M65.4,18.71c8.09-.44,14.92,3.87,14.31,12.66-.33,4.76-3.7,8.44-8.18,9.72-7.7,2.2-17.75-.74-18.3-9.95-.46-7.62,4.98-12.04,12.18-12.43ZM65.93,23.97c-4.82.28-6.82,3.91-5.7,8.44,1.37,5.51,11.24,5.46,12.52-.11,1.17-5.1-1.56-8.64-6.82-8.33Z"/>
+          <polygon points="35.33 27.64 45.56 27.64 45.56 19.17 45.67 19.06 52.33 19.06 52.33 41.3 52.22 41.41 45.67 41.41 45.56 41.3 45.56 32.83 35.33 32.83 35.33 41.3 35.21 41.41 28.67 41.41 28.56 41.3 28.56 19.06 35.21 19.06 35.33 19.17 35.33 27.64"/>
+          <path d="M28.1,26.74l-6.09,1.43c-1.12-3.97-5.98-4.8-9.48-3.8s-4.59,3.51-4.29,7c.4,4.71,6.39,5.86,10.12,4.63,1.81-.6,3.04-1.93,3.7-3.7l6.01,1.43c-.91,4-4.73,6.66-8.54,7.57-7.78,1.84-17.78-1.4-18.13-10.61-.38-9.76,9.92-13.37,18.06-11.52,3.92.89,7.68,3.47,8.65,7.56Z"/>
+          <path d="M166.61,19.06v14.19c-.34,5.81-4.79,8.18-10.12,8.47-6.38.34-12.95-1.17-13.36-8.69v-13.96h6.66l.11.11v13.85c0,.74.58,1.97,1.17,2.44,1.63,1.3,6.29,1.29,7.86-.11.47-.42,1.05-1.57,1.05-2.18v-14l.11-.11h6.51Z"/>
+          <circle cx="195.23" cy="38.16" r="3.16"/>
+        </svg>
+      </a>
+      <nav class="nav-links">
+        <a href="/features/">Features</a>
+        <a href="/packages/">Pricing</a>
+        <a href="/compare/" class="active">Compare</a>
+        <a href="/faq/">FAQ</a>
+      </nav>
+      <div class="nav-right">
+        <a href="https://cloud.getchowhub.com/" class="nav-signin">Sign in</a>
+        <a href="/packages/#free" class="nav-cta">Start Free</a>
+      </div>
+      <button class="nav-toggle" aria-label="Open menu" onclick="document.getElementById('siteNav').classList.toggle('open')">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+    </div>
+  </header>
+
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="eyebrow">Switching from Clover</div>
+      <h1 class="h1">No more <span class="highlight">$100/mo per device.</span></h1>
+      <p class="lead" style="margin: 1.25rem auto 0;">Clover is Fiserv-owned and sold mostly through banks and ISOs, which is why pricing varies wildly. Common reality: $100–$180/mo per device on the Hospitality tier, plus add-on apps stacking $10–$50/mo each, plus the Fiserv processing lock-in.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <div class="compare-wrap">
+        <div class="compare-scroll">
+          <table class="compare">
+            <thead><tr><th></th><th class="chowhub-col">ChowHub</th><th>Clover</th></tr></thead>
+            <tbody>
+              <tr><td class="row-label">Entry plan</td><td class="chowhub-col">$29/mo</td><td>~$60/mo Hospitality Starter</td></tr>
+              <tr><td class="row-label">Mid / common plan</td><td class="chowhub-col">$59/mo Pro</td><td>$100–$180/mo per device (Standard / Advanced)</td></tr>
+              <tr><td class="row-label">Cost per additional terminal</td><td class="chowhub-col yes">$0 software, ~$200 hardware</td><td class="no">$60–$180/mo each + $800–$1,800 hardware</td></tr>
+              <tr><td class="row-label">Hardware</td><td class="chowhub-col yes">BYO — Pi, laptop, tablet</td><td class="no">Clover Mini $799, Station Solo $1,349, Duo $1,799, Flex $599</td></tr>
+              <tr><td class="row-label">Processor</td><td class="chowhub-col yes">Your Stripe or Square</td><td class="no">Clover/Fiserv required — 2.3–2.6% + 10¢, varies by reseller</td></tr>
+              <tr><td class="row-label">Contract</td><td class="chowhub-col yes">Monthly</td><td class="no">Often 3-year (via bank/ISO)</td></tr>
+              <tr><td class="row-label">Recipe inventory</td><td class="chowhub-col yes">Yes (Pro)</td><td class="meh">Via apps — extra cost</td></tr>
+              <tr><td class="row-label">App marketplace</td><td class="no">Limited</td><td class="yes">Massive — loyalty, scheduling, accounting</td></tr>
+              <tr><td class="row-label">Customer-facing display</td><td class="meh">Not built-in</td><td class="yes">Built into Mini / Station hardware</td></tr>
+              <tr><td class="row-label">Self-host / offline</td><td class="chowhub-col yes">Yes (Docker / Pi)</td><td class="no">No</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="versus-grid">
+        <div class="glass versus-card">
+          <div class="eyebrow">Where ChowHub wins</div>
+          <h3 class="h3" style="margin-bottom: .75rem;">Math.</h3>
+          <ul class="check-list">
+            <li>Roughly 1/3 to 1/2 the monthly cost at the same feature level</li>
+            <li>No per-device monthly tax — adding a station is hardware-only</li>
+            <li>No 3-year contract via a bank sales rep</li>
+            <li>No Clover hardware purchase — your Pi or laptop works fine</li>
+            <li>Recipe inventory included, not a paid app</li>
+            <li>Self-hostable for venues that prefer it</li>
+          </ul>
+        </div>
+        <div class="glass versus-card">
+          <div class="eyebrow eyebrow-violet">Where Clover wins</div>
+          <h3 class="h3" style="margin-bottom: .75rem;">Polish and ecosystem.</h3>
+          <ul class="cross-list">
+            <li>Massive third-party app marketplace — loyalty, scheduling, payroll, accounting</li>
+            <li>Polished, purpose-built first-party hardware</li>
+            <li>Built-in customer-facing display on Mini / Station</li>
+            <li>Well-known brand customers recognize at the counter</li>
+            <li>Native gift card physical-card fulfillment</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="feature-grid feature-grid-2">
+        <div class="glass fcard">
+          <h3>Best fit for ChowHub</h3>
+          <p class="muted" style="font-size: .95rem;">Anyone running 2+ Clover devices and watching the monthly bill climb. The per-device economics flip dramatically once you stop paying $100+/mo per terminal.</p>
+        </div>
+        <div class="glass fcard">
+          <h3>Stay on Clover if…</h3>
+          <p class="muted" style="font-size: .95rem;">You depend on a specific Clover marketplace app (loyalty integrations, physical gift cards, niche payroll) and the bank relationship that comes with the deal works for you.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="section" style="padding-top: 0;">
+    <div class="container">
+      <div class="glass" style="padding: 2.5rem; max-width: 760px; margin: 0 auto;">
+        <div class="eyebrow">Migration in plain English</div>
+        <h3 class="h3" style="margin-bottom: .75rem;">It's a one-evening switch.</h3>
+        <p class="muted" style="font-size: 1rem;">Export your existing menu to CSV. Import it into ChowHub with the bulk loader. Connect your Stripe or Square account (you can keep the one you already use). Pick a slow weekday — Tuesday afternoon works for most — and switch over. Run both systems in parallel for the first lunch if it helps you sleep. We can answer migration questions on email at any point.</p>
+      </div>
+    </div>
+  </section>
+  <section class="cta-banner">
+    <div class="container">
+      <div class="cta-card">
+        <div class="cta-copy">
+          <h2 class="cta-title">Ready to drop the per-device tax?</h2>
+          <p class="cta-sub">One $29 Base plan covers as many terminals, KDS screens, and bar displays as you want.</p>
+        </div>
+        <div class="cta-actions">
+          <a href="/packages/#free" class="btn btn-pro cta-btn">
+            Start Free
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+          </a>
+          <a href="mailto:billing@chowhub.ca" class="btn btn-outline cta-btn">Talk to sales</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="/" class="logo" aria-label="ChowHub">
+            <svg viewBox="0 0 200 60" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="84.98 19.06 89.46 34.26 94.65 19.14 101.27 19.06 106.61 34.26 111.08 19.06 124.63 19.06 124.63 27.64 134.93 27.64 134.93 19.06 141.59 19.06 141.7 19.17 141.7 41.3 141.59 41.41 135.05 41.41 134.93 41.3 134.93 32.83 124.63 32.83 124.63 41.3 124.51 41.41 117.93 41.41 117.93 19.66 110.41 41.37 102.62 41.34 97.77 27.41 93.07 41.34 92.85 41.41 85.54 41.41 85.29 41.29 77.68 19.06 84.98 19.06"/>
+              <path d="M168.11,19.06h14.26c4.21.29,8.5,1.65,8.09,6.73-.14,1.67-1.2,3.33-2.74,4.02l-.05.15c2.45.93,3.41,2.9,3.24,5.46-.31,4.74-5.37,5.92-9.29,5.98h-13.51v-22.35ZM181.69,24.1h-6.88v3.61h7.03c.3,0,1.24-.27,1.51-.45.66-.46.78-1.44.49-2.15-.16-.4-.62-.66-1.02-.79-.31-.1-.81-.2-1.13-.22ZM174.81,36.22h7.41c.34,0,1.17-.29,1.46-.49.79-.57.89-2.12.08-2.7-.25-.18-1.1-.49-1.39-.49h-7.56v3.69Z"/>
+              <path d="M65.4,18.71c8.09-.44,14.92,3.87,14.31,12.66-.33,4.76-3.7,8.44-8.18,9.72-7.7,2.2-17.75-.74-18.3-9.95-.46-7.62,4.98-12.04,12.18-12.43ZM65.93,23.97c-4.82.28-6.82,3.91-5.7,8.44,1.37,5.51,11.24,5.46,12.52-.11,1.17-5.1-1.56-8.64-6.82-8.33Z"/>
+              <polygon points="35.33 27.64 45.56 27.64 45.56 19.17 45.67 19.06 52.33 19.06 52.33 41.3 52.22 41.41 45.67 41.41 45.56 41.3 45.56 32.83 35.33 32.83 35.33 41.3 35.21 41.41 28.67 41.41 28.56 41.3 28.56 19.06 35.21 19.06 35.33 19.17 35.33 27.64"/>
+              <path d="M28.1,26.74l-6.09,1.43c-1.12-3.97-5.98-4.8-9.48-3.8s-4.59,3.51-4.29,7c.4,4.71,6.39,5.86,10.12,4.63,1.81-.6,3.04-1.93,3.7-3.7l6.01,1.43c-.91,4-4.73,6.66-8.54,7.57-7.78,1.84-17.78-1.4-18.13-10.61-.38-9.76,9.92-13.37,18.06-11.52,3.92.89,7.68,3.47,8.65,7.56Z"/>
+              <path d="M166.61,19.06v14.19c-.34,5.81-4.79,8.18-10.12,8.47-6.38.34-12.95-1.17-13.36-8.69v-13.96h6.66l.11.11v13.85c0,.74.58,1.97,1.17,2.44,1.63,1.3,6.29,1.29,7.86-.11.47-.42,1.05-1.57,1.05-2.18v-14l.11-.11h6.51Z"/>
+              <circle cx="195.23" cy="38.16" r="3.16"/>
+            </svg>
+          </a>
+          <p>Real POS. No lock-in. Built by Norel Technologies for independent operators.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Product</h4>
+          <ul>
+            <li><a href="/features/">Features</a></li>
+            <li><a href="/packages/">Pricing</a></li>
+            <li><a href="/hardware/">Hardware</a></li>
+            <li><a href="/compare/">Compare</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Industries</h4>
+          <ul>
+            <li><a href="/for/food-trucks/">Food Trucks</a></li>
+            <li><a href="/for/cafes/">Cafés</a></li>
+            <li><a href="/for/bars/">Bars</a></li>
+            <li><a href="/for/restaurants/">Restaurants</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="/about/">About</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/faq/">FAQ</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Status</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Norel Technologies · <a href="mailto:billing@chowhub.ca">billing@chowhub.ca</a></span>
+        <span class="footer-tag">Real POS. No lock-in.</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
