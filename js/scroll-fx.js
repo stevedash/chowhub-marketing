@@ -169,11 +169,34 @@
     heroDevice.style.transform = 'translateX(4%) translateY(' + ty.toFixed(1) + 'px) scale(' + scale.toFixed(3) + ')';
   }
 
-  // ── Single rAF-throttled update for fills + hero ───────────────────
+  // ── 4b. Scroll-linked scale-in for the feature screenshots ─────────
+  // The big .scene-shot images settle into place (rise + scale + fade) as
+  // they pass through the viewport. The scroll position IS the timeline, so
+  // they track the wheel instead of playing a fixed one-shot transition.
+  var shots = [];
+  Array.prototype.forEach.call(document.querySelectorAll('.home-v2 .scene-shot'), function (el) {
+    shots.push(el);
+  });
+  function paintShot(el) {
+    var rect = el.getBoundingClientRect();
+    var vh = window.innerHeight;
+    // 0 as the shot's top first peeks in at the bottom, 1 once it has risen
+    // into comfortable view — a long runway so the motion reads as you scroll.
+    var start = vh * 0.92, end = vh * 0.42;
+    var p = (start - rect.top) / (start - end);
+    p = p < 0 ? 0 : p > 1 ? 1 : p;
+    var scale = 0.93 + 0.07 * p;
+    var ty = (1 - p) * 52;
+    el.style.opacity = (p < 0.72 ? p / 0.72 : 1).toFixed(3);
+    el.style.transform = 'translateY(' + ty.toFixed(1) + 'px) scale(' + scale.toFixed(3) + ')';
+  }
+
+  // ── Single rAF-throttled update for fills + hero + shots ───────────
   var ticking = false;
   function update() {
     ticking = false;
     for (var i = 0; i < fills.length; i++) paintFill(fills[i]);
+    for (var s = 0; s < shots.length; s++) paintShot(shots[s]);
     paintHero();
   }
   function schedule() {
@@ -193,6 +216,7 @@
         var kids = e.target.children, delay = 0;
         for (var i = 0; i < kids.length; i++) {
           if (kids[i].hasAttribute('data-fill')) continue; // word-fill owns these
+          if (kids[i].classList.contains('scene-shot')) continue; // scroll-linked scale-in owns these
           kids[i].style.transitionDelay = (delay * 90) + 'ms';
           kids[i].classList.add('in');
           delay++;

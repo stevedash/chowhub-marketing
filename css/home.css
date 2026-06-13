@@ -312,6 +312,14 @@
   opacity: 1;
   transform: none;
 }
+/* The feature screenshots get their own scroll-linked scale-in (scroll-fx.js
+   drives transform/opacity every frame), so drop the one-shot transition here
+   to avoid smearing, and anchor the scale toward the lower edge. */
+.home-v2.reveal-ready .scene-inner > .scene-shot {
+  transition: none;
+  transform-origin: center 70%;
+  will-change: transform, opacity;
+}
 
 /* Mobile: the hero device rises in from the bottom with a slight scale,
    so the entrance reads as starting from the device. */
