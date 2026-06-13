@@ -1,0 +1,394 @@
+/* ════════════════════════════════════════════════════════════════
+   home.css — Homepage redesign (Umano-inspired), SCOPED to .home-v2
+   Loaded only by index.html. Does NOT affect any other page.
+   Light-dominant theme, floating pill nav, scroll-reveal, big type.
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Light base (override the dark site theme, homepage only) ───── */
+.home-v2 {
+  background: #ffffff;
+  color: #0a0a0a;
+}
+/* Kill the global indigo ambient glow on the homepage */
+.home-v2::before { display: none !important; }
+
+/* ── Floating pill nav ─────────────────────────────────────────── */
+.home-v2 .nav {
+  position: fixed;
+  top: 1rem;
+  left: 0;
+  right: 0;
+  background: transparent;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  border: 0;
+}
+.home-v2 .nav-inner {
+  width: auto;
+  max-width: 880px;
+  margin: 0 auto;
+  height: auto;
+  padding: .5rem .5rem .5rem 1.4rem;
+  gap: 1.5rem;
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 999px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.10);
+  transition: box-shadow .25s ease, background .25s ease;
+}
+.home-v2 .nav.scrolled .nav-inner {
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.16);
+}
+.home-v2 .logo svg { color: #0a0a0a; height: 45px; }
+.home-v2 .logo svg circle { fill: var(--green); }
+
+.home-v2 .nav-links a { color: #3f3f46; }
+.home-v2 .nav-links a:hover,
+.home-v2 .nav-links a.active { color: #0a0a0a; }
+.home-v2 .nav-signin { color: #3f3f46; }
+.home-v2 .nav-signin:hover { color: #0a0a0a; }
+
+/* Nav text in Inter (weight 600, matching umanodesign.studio) */
+.home-v2 .nav-links a,
+.home-v2 .nav-signin,
+.home-v2 .nav-cta {
+  font-family: 'Inter', system-ui, sans-serif;
+}
+.home-v2 .nav-links a,
+.home-v2 .nav-signin {
+  font-weight: 600;
+  font-size: 16px;   /* match umanodesign.studio */
+}
+
+/* Green rollover: text turns green on hover (no underline) */
+.home-v2 .nav-links a,
+.home-v2 .nav-signin {
+  transition: color .2s ease;
+}
+.home-v2 .nav-links a:hover,
+.home-v2 .nav-signin:hover {
+  color: #16a34a;
+}
+
+.home-v2 .nav-cta {
+  background: #052e16;
+  color: #fff;
+  border-color: #052e16;
+  box-shadow: none;
+}
+.home-v2 .nav-cta:hover { background: #064e2b; box-shadow: 0 6px 18px rgba(5,46,22,0.25); }
+
+.home-v2 .nav-toggle {
+  color: #0a0a0a;
+  border: none;
+  outline: none;
+  background: transparent;
+  box-shadow: none;
+}
+.home-v2 .nav-toggle:focus,
+.home-v2 .nav-toggle:focus-visible { outline: none; box-shadow: none; }
+/* Burger ↔ X icon swap: burger by default, X only when the menu is open */
+.home-v2 .nav-toggle .icon-close { display: none; }
+.home-v2 .nav-toggle .icon-burger { display: block; }
+.home-v2 .nav.open .nav-toggle .icon-burger { display: none; }
+.home-v2 .nav.open .nav-toggle .icon-close { display: block; }
+
+@media (max-width: 880px) {
+  .home-v2 .nav-inner { position: relative; padding: .55rem .6rem .55rem 1.1rem; max-width: none; margin: 0 1rem; }
+  .home-v2 .nav.open .nav-inner { border-radius: 1.4rem; }
+  .home-v2 .nav.open .nav-links,
+  .home-v2 .nav.open .nav-right { border-top-color: rgba(0,0,0,0.08); }
+
+  /* Pin the toggle to the pill's top-right in BOTH states (so it doesn't
+     drop to the bottom when the menu column expands). */
+  .home-v2 .nav-toggle {
+    position: absolute;
+    top: .5rem;
+    right: .6rem;
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Dropdown CTAs: Sign in + Start Free as aligned full-width stacked buttons */
+  .home-v2 .nav.open .nav-right {
+    gap: .55rem;
+    padding-top: .9rem;
+    margin-top: .4rem;
+  }
+  .home-v2 .nav.open .nav-signin {
+    align-self: stretch;
+    text-align: center;
+    padding: .8rem 1rem;
+    border: 1px solid rgba(0, 0, 0, 0.15);
+    border-radius: 999px;
+    color: #0a0a0a;
+  }
+  .home-v2 .nav.open .nav-cta {
+    align-self: stretch;
+    justify-content: center;
+    padding: .8rem 1rem;
+  }
+}
+
+/* ── Scene sizing: shorter, content-driven (kills the empty feel) ── */
+.home-v2 .scene {
+  min-height: auto;
+  padding: 7rem 1.5rem;
+}
+.home-v2 .scene-hero {
+  min-height: 92vh;
+  padding-top: 7rem;
+  padding-bottom: 0;          /* device sits flush with the hero's bottom edge */
+  align-items: stretch;       /* let .scene-inner fill the full hero height */
+  overflow: hidden;
+}
+.home-v2 .scene-hero .scene-inner { justify-content: flex-start; }
+@media (max-width: 768px) {
+  .home-v2 .scene { padding: 4.5rem 1.25rem; }
+  .home-v2 .scene-hero { min-height: 86vh; padding-top: 6.5rem; padding-bottom: 0; }
+}
+
+/* ── Display headlines: Rethink Sans ExtraBold on the MAIN words ──── */
+.home-v2 .scene-title {
+  font-family: 'Rethink Sans', 'Outfit', system-ui, sans-serif;
+  font-size: clamp(2.75rem, 8vw, 6rem);
+  font-weight: 800;
+  letter-spacing: -.03em;
+  line-height: 1.03;
+}
+/* Highlight words now match the main words (inherit Rethink Sans
+   ExtraBold from .scene-title); only their color differs per section. */
+.home-v2 .scene-eyebrow {
+  font-size: .8rem;
+  font-weight: 700;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.home-v2 .scene-sub { font-size: clamp(1.1rem, 1.5vw, 1.3rem); }
+
+/* ── Section background rhythm ──────────────────────────────────── */
+/* GREEN hero */
+.home-v2 .scene--green {
+  /* Vertical gradient: same green up top, 30% darker at the bottom */
+  background: linear-gradient(180deg, #22c55e 0%, #188a42 100%);
+  color: #052e16;
+}
+.home-v2 .scene--green .scene-eyebrow { color: #052e16; opacity: .8; }
+.home-v2 .scene--green .scene-title { color: black; font-size: clamp(3.34rem, 9.72vw, 7.29rem); }
+.home-v2 .scene--green .scene-title .highlight { color: black; }
+/* Hero subline styled to match umanodesign.studio's "We design your…" line */
+.home-v2 .scene--green .scene-sub {
+  color: #052e16;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 32px;
+  letter-spacing: -0.24px;
+}
+/* Hero buttons recolored to read on green */
+.home-v2 .scene--green .btn-pro {
+  background: #052e16; color: #fff; border-color: #052e16; box-shadow: none;
+}
+.home-v2 .scene--green .btn-pro:hover { background: #064e2b; box-shadow: 0 8px 24px rgba(5,46,22,0.3); }
+.home-v2 .scene--green .btn-outline {
+  background: rgba(255,255,255,0.18); color: #052e16; border-color: rgba(5,46,22,0.28);
+}
+.home-v2 .scene--green .btn-outline:hover { background: rgba(255,255,255,0.4); border-color: rgba(5,46,22,0.5); }
+
+/* Floating hero device: the POS screenshot sits BEHIND the iPad mockup
+   and shows through its knocked-out (transparent) screen. Outer
+   .hero-device gets the entrance reveal (opacity/transform); the inner
+   wrapper owns the continuous float so the two transforms never collide. */
+.home-v2 .hero-device {
+  margin-top: auto;                /* pushed to the bottom → flush with hero edge */
+  width: min(1231px, 100vw);       /* ~1.6x; capped to viewport */
+  max-width: none;
+}
+.home-v2 .hero-device-inner {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1600 / 1022;       /* matches ipad-hero.webp */
+  display: block;
+  /* The iPad's screen sits ~4% left of the image's center; nudge right so
+     the device reads as visually centered on the page. */
+  transform: translateX(4%);
+}
+/* Screenshot — positioned to fill the iPad's transparent screen cutout */
+.home-v2 .hero-device-screen {
+  position: absolute;
+  /* Slight bleed UNDER the bezel to kill the green edge gap, but kept inside
+     the device's outer edge (~81.4%) with rounded corners so the corners
+     tuck under the device curve instead of poking past it. */
+  left: 11%;
+  top: 3.3%;
+  width: 69.5%;
+  height: 80.5%;
+  object-fit: cover;          /* recording is ~4:3 now, so it fills the screen with no clipping */
+  object-position: center;
+  background: #0a0a0a;         /* safety fill behind the video */
+  border-radius: 28px;
+  z-index: 1;
+}
+/* iPad + hands on top; transparent screen lets the shot show through */
+.home-v2 .hero-device-frame {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* WHITE + GRAY light sections */
+.home-v2 .scene--light { background: #ffffff; color: #0a0a0a; }
+.home-v2 .scene--gray  { background: #f4f4f5; color: #0a0a0a; }
+.home-v2 .scene--light .scene-title,
+.home-v2 .scene--gray  .scene-title { color: #0a0a0a; }
+.home-v2 .scene--light .scene-sub,
+.home-v2 .scene--gray  .scene-sub { color: #52525b; }
+.home-v2 .scene--light .scene-eyebrow,
+.home-v2 .scene--gray  .scene-eyebrow { color: #16a34a; }
+.home-v2 .scene--light .scene-title .highlight,
+.home-v2 .scene--gray  .scene-title .highlight { color: #16a34a; }
+
+/* DARK contrast section (pricing) */
+.home-v2 .scene--dark { background: #0a0a0a; color: #fafafa; }
+.home-v2 .scene--dark .scene-title { color: #fafafa; }
+.home-v2 .scene--dark .scene-sub { color: #a1a1aa; }
+.home-v2 .scene--dark .scene-eyebrow { color: #4ade80; }
+.home-v2 .scene--dark .scene-title .highlight { color: #4ade80; }
+
+/* ── Screenshot frames retuned for light sections ──────────────── */
+.home-v2 .scene--light .scene-shot,
+.home-v2 .scene--gray .scene-shot {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: #fff;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.13);
+}
+.home-v2 .scene-shot::before {
+  background: linear-gradient(135deg, rgba(34,197,94,0.35), transparent 55%);
+  filter: blur(26px);
+  opacity: .5;
+}
+
+/* (The green hero background comes from .scene--green, which already
+   outranks the inline .scene-hero photo style via higher specificity.) */
+
+/* ── CTA + Footer on the light page ────────────────────────────── */
+.home-v2 .cta-banner { padding: 2rem 0 5rem; }
+.home-v2 .site-footer { background: #0a0a0a; border-top: 1px solid rgba(255,255,255,0.08); }
+
+/* ── Scroll reveal ─────────────────────────────────────────────── */
+/* Only hides content once JS confirms it can reveal it (.reveal-ready),
+   so no-JS users always see everything. */
+.home-v2.reveal-ready .scene-inner > * {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity .7s cubic-bezier(.2,.7,.2,1), transform .7s cubic-bezier(.2,.7,.2,1);
+  will-change: opacity, transform;
+}
+.home-v2.reveal-ready .scene-inner > *.in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Mobile: the hero device rises in from the bottom with a slight scale,
+   so the entrance reads as starting from the device. */
+/* Mobile hero: Umano-style zoom-out reveal — start zoomed into the iPad
+   screen, pull back to reveal the device + hands, then the text fades in. */
+@keyframes heroZoomOut {
+  from { transform: scale(3.2); }
+  to   { transform: scale(1); }
+}
+@keyframes heroTextIn {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: none; }
+}
+@media (max-width: 880px) {
+  /* The device is much smaller on mobile, so the fixed 28px screen radius is
+     proportionally huge and lets green show at the corners — shrink it. */
+  .home-v2 .hero-device-screen { border-radius: 9px; }
+
+  .home-v2.reveal-ready .scene-hero .hero-device {
+    opacity: 1;
+    transform-origin: 46% 44%;   /* the iPad screen's center */
+    animation: heroZoomOut 1.6s cubic-bezier(.2, .7, .2, 1) both;
+  }
+  .home-v2.reveal-ready .scene-hero .scene-eyebrow,
+  .home-v2.reveal-ready .scene-hero .scene-title,
+  .home-v2.reveal-ready .scene-hero .scene-sub {
+    animation: heroTextIn .8s ease both;
+  }
+  .home-v2.reveal-ready .scene-hero .scene-eyebrow { animation-delay: .95s; }
+  .home-v2.reveal-ready .scene-hero .scene-title   { animation-delay: 1.05s; }
+  .home-v2.reveal-ready .scene-hero .scene-sub     { animation-delay: 1.2s; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-v2.reveal-ready .scene-inner > * {
+    opacity: 1 !important;
+    transform: none !important;
+    transition: none !important;
+  }
+}
+
+/* ════════════════════════════════════════════════════════════════
+   Umano-style motion layer (driven by js/scroll-fx.js)
+   ════════════════════════════════════════════════════════════════ */
+
+/* ── Lenis smooth-scroll (recommended baseline CSS) ─────────────── */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: clip; }
+
+/* ── Scroll-linked word-fill ────────────────────────────────────── */
+/* scroll-fx splits [data-fill] text into .w word spans and drives each
+   word's opacity directly from scroll position (dim → solid). */
+.home-v2 [data-fill] .w {
+  display: inline-block;
+  will-change: opacity;
+}
+/* Once JS is active, words start dim so there's no flash before the
+   first paint. Words in view at load are immediately lifted by the JS. */
+.home-v2.fill-ready [data-fill] .w { opacity: .16; }
+/* A [data-fill] title opts out of the block fade-up — word-fill owns it. */
+.home-v2.reveal-ready .scene-inner > [data-fill] {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Manifesto statement (Umano's signature scroll-fill paragraph) ─ */
+.home-v2 .scene-statement {
+  padding: 11rem 1.5rem;
+  text-align: center;
+}
+.home-v2 .scene-statement .statement {
+  font-family: 'Rethink Sans', 'Outfit', system-ui, sans-serif;
+  font-weight: 800;
+  font-size: clamp(1.9rem, 4.6vw, 3.9rem);
+  letter-spacing: -.03em;
+  line-height: 1.12;
+  max-width: 22ch;
+  margin: 0 auto;
+}
+.home-v2 .scene-statement .statement .accent { color: #16a34a; }
+.home-v2 .scene--dark .scene-statement .statement .accent { color: #4ade80; }
+@media (max-width: 768px) {
+  .home-v2 .scene-statement { padding: 6rem 1.25rem; }
+  .home-v2 .scene-statement .statement { max-width: 18ch; }
+}
+
+/* ── Hero device: let JS drive a scale-on-scroll transform (desktop) ─ */
+@media (min-width: 881px) {
+  .home-v2 .scene-hero .hero-device-inner { will-change: transform; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* No word-fill / no smooth scroll — show everything solid. */
+  .home-v2.fill-ready [data-fill] .w { opacity: 1 !important; }
+}
