@@ -54,6 +54,18 @@
     track.addEventListener('scroll', syncButtons, { passive: true });
     window.addEventListener('resize', syncButtons, { passive: true });
     syncButtons();
+
+    // Slide the gallery in from the right when it scrolls into view (Apple-style).
+    // Skipped under reduced motion (CSS shows it immediately).
+    if (!reduce && 'IntersectionObserver' in window) {
+      slider.classList.add('ch-slide-pending');
+      var eio = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (e.isIntersecting) { slider.classList.add('ch-slide-in'); eio.unobserve(e.target); }
+        });
+      }, { threshold: 0.25 });
+      eio.observe(slider);
+    }
   });
 
   if (reduce) return; // honor reduced-motion: no reveals, no smooth scroll

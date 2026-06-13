@@ -403,6 +403,8 @@ html.lenis, html.lenis body { height: auto; }
    with reduced motion); scroll-snap + prev/next arrows.
    ════════════════════════════════════════════════════════════════ */
 .home-v2 .ch-slider { margin-top: 2.5rem; }
+/* Clip the slide-in-from-right entrance so it can't cause page h-scroll. */
+.home-v2 .ch-slider { overflow: hidden; }
 .home-v2 .ch-slider-track {
   display: flex;
   gap: 16px;
@@ -411,7 +413,6 @@ html.lenis, html.lenis body { height: auto; }
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   scrollbar-width: none;            /* Firefox */
-  padding-bottom: 6px;             /* don't clip card shadows */
 }
 .home-v2 .ch-slider-track::-webkit-scrollbar { display: none; }
 .home-v2 .ch-slide {
@@ -419,14 +420,28 @@ html.lenis, html.lenis body { height: auto; }
   width: min(820px, 84%);          /* big active card + a peek of the next */
   scroll-snap-align: start;        /* left-align each card; advances cleanly card-by-card */
 }
+/* Transparent PNGs on a plain white background — no frame, no grey shadow. */
 .home-v2 .ch-slide img {
   width: 100%;
   height: auto;
   display: block;
-  border-radius: 22px;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.13);
   background: #fff;
+}
+
+/* ── Slide-in-from-right entrance (driven by scroll-fx.js IntersectionObserver) ── */
+/* Opt the slider out of the section's default fade-up; the track has its own entrance. */
+.home-v2.reveal-ready .scene-inner > .ch-slider { opacity: 1; transform: none; }
+.home-v2 .ch-slider.ch-slide-pending .ch-slider-track {
+  opacity: 0;
+  transform: translateX(72px);
+}
+.home-v2 .ch-slider.ch-slide-pending.ch-slide-in .ch-slider-track {
+  opacity: 1;
+  transform: translateX(0);
+  transition: transform .9s cubic-bezier(.2, .7, .2, 1), opacity .6s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .home-v2 .ch-slider.ch-slide-pending .ch-slider-track { opacity: 1; transform: none; }
 }
 .home-v2 .ch-slider-controls {
   display: flex;
