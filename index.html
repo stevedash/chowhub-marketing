@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&family=Rethink+Sans:wght@500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/css/site.css" />
   <link rel="stylesheet" href="/css/upgrade.css" />
-  <link rel="stylesheet" href="/css/home.css?v=12" />
+  <link rel="stylesheet" href="/css/home.css?v=14" />
   <style>
     .scene-hero {
       position: relative;
@@ -106,8 +106,20 @@
       <p class="scene-sub">
         Dine-in, takeaway, online. Tables, modifiers, PIN login. The whole front-of-house, in the box from day one.
       </p>
-      <div class="scene-shot">
-        <img src="/images/screenshots/pos-dashboard.png" alt="ChowHub POS dashboard with live order screen, tables, and menu" loading="lazy" />
+      <div class="ch-slider" data-slider>
+        <div class="ch-slider-track" data-slider-track>
+          <div class="ch-slide"><img src="/images/mockups/1-dine-in.png" alt="Dine-in order screen with tables and chairs" loading="lazy" /></div>
+          <div class="ch-slide"><img src="/images/mockups/2-modifier.png" alt="Item modifier picker on the POS" loading="lazy" /></div>
+          <div class="ch-slide"><img src="/images/mockups/3-online-order.png" alt="Online order landing on the POS" loading="lazy" /></div>
+        </div>
+        <div class="ch-slider-controls">
+          <button class="ch-slider-btn" type="button" data-slider-prev aria-label="Previous image">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/></svg>
+          </button>
+          <button class="ch-slider-btn" type="button" data-slider-next aria-label="Next image">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+          </button>
+        </div>
       </div>
     </div>
   </section>
@@ -265,7 +277,7 @@
 
   <!-- Homepage motion: Lenis smooth-scroll + word-fill + reveals -->
   <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js" defer></script>
-  <script src="/js/scroll-fx.js?v=2" defer></script>
+  <script src="/js/scroll-fx.js?v=3" defer></script>
 
 </body>
 </html>

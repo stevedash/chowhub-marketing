@@ -396,3 +396,62 @@ html.lenis, html.lenis body { height: auto; }
   /* No word-fill / no smooth scroll — show everything solid. */
   .home-v2.fill-ready [data-fill] .w { opacity: 1 !important; }
 }
+
+/* ════════════════════════════════════════════════════════════════
+   Apple-style horizontal image slider (driven by js/scroll-fx.js)
+   Used in the "Your day. In one screen." section. User-driven (works
+   with reduced motion); scroll-snap + prev/next arrows.
+   ════════════════════════════════════════════════════════════════ */
+.home-v2 .ch-slider { margin-top: 2.5rem; }
+.home-v2 .ch-slider-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;            /* Firefox */
+  padding-bottom: 6px;             /* don't clip card shadows */
+}
+.home-v2 .ch-slider-track::-webkit-scrollbar { display: none; }
+.home-v2 .ch-slide {
+  flex: 0 0 auto;
+  width: min(820px, 84%);          /* big active card + a peek of the next */
+  scroll-snap-align: start;        /* left-align each card; advances cleanly card-by-card */
+}
+.home-v2 .ch-slide img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 22px;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.13);
+  background: #fff;
+}
+.home-v2 .ch-slider-controls {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 1.25rem;
+}
+.home-v2 .ch-slider-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.06);
+  border: none;
+  color: #0a0a0a;
+  cursor: pointer;
+  transition: background .2s ease, opacity .2s ease, transform .1s ease;
+}
+.home-v2 .ch-slider-btn:hover:not(:disabled) { background: rgba(0, 0, 0, 0.12); }
+.home-v2 .ch-slider-btn:active:not(:disabled) { transform: scale(0.94); }
+.home-v2 .ch-slider-btn:disabled { opacity: .3; cursor: default; }
+@media (max-width: 768px) {
+  .home-v2 .ch-slide { width: 88%; }
+  .home-v2 .ch-slide img { border-radius: 16px; }
+}

@@ -27,6 +27,35 @@
   navShadow();
   window.addEventListener('scroll', navShadow, { passive: true });
 
+  // ── Horizontal image slider (Apple-style) ─────────────────────────
+  // User-driven (prev/next + native swipe/scroll), so it runs even under
+  // reduced-motion — only the scroll animation is suppressed there.
+  Array.prototype.forEach.call(document.querySelectorAll('.home-v2 [data-slider]'), function (slider) {
+    var track = slider.querySelector('[data-slider-track]');
+    if (!track) return;
+    var prev = slider.querySelector('[data-slider-prev]');
+    var next = slider.querySelector('[data-slider-next]');
+    var behavior = reduce ? 'auto' : 'smooth';
+
+    function step() {
+      var slide = track.querySelector('.ch-slide');
+      if (!slide) return track.clientWidth;
+      var cs = getComputedStyle(track);
+      var gap = parseFloat(cs.columnGap || cs.gap || '16') || 16;
+      return slide.getBoundingClientRect().width + gap;
+    }
+    function syncButtons() {
+      var max = track.scrollWidth - track.clientWidth - 2;
+      if (prev) prev.disabled = track.scrollLeft <= 2;
+      if (next) next.disabled = track.scrollLeft >= max;
+    }
+    if (prev) prev.addEventListener('click', function () { track.scrollBy({ left: -step(), behavior: behavior }); });
+    if (next) next.addEventListener('click', function () { track.scrollBy({ left: step(), behavior: behavior }); });
+    track.addEventListener('scroll', syncButtons, { passive: true });
+    window.addEventListener('resize', syncButtons, { passive: true });
+    syncButtons();
+  });
+
   if (reduce) return; // honor reduced-motion: no reveals, no smooth scroll
 
   // ── 2. Lenis smooth scroll (optional dependency) ───────────────────
