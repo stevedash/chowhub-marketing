@@ -96,9 +96,10 @@
   function paintFill(item) {
     var rect = item.el.getBoundingClientRect();
     var vh = window.innerHeight;
-    // Progress: 0 when the block's top is ~88% down the viewport,
-    // 1 by the time its top reaches ~38%.
-    var start = vh * 0.88, end = vh * 0.38;
+    // Progress: 0 when the block's top first peeks in at the viewport bottom,
+    // 1 only once its top has risen to ~22% — a long runway so the left→right
+    // fill plays out gradually instead of snapping shut.
+    var start = vh * 1.0, end = vh * 0.22;
     var p = (start - rect.top) / (start - end);
     p = p < 0 ? 0 : p > 1 ? 1 : p;
     var n = item.words.length;
